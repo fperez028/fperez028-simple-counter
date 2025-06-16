@@ -1,24 +1,28 @@
 import React from "react";
-
-//include images into your bundle
 import clockIcon from "../../img/clock-regular.svg";
 
-//create your first component
-export const SecondsCounter = () => {
-	return (
+export const SecondsCounter = ({ seconds }) => {
+    const digits = String(seconds).padStart(6, '0').split('');
+
+    return (
         <div className="d-flex flex-column">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossOrigin="anonymous" />
+            <link
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+                rel="stylesheet"
+                crossOrigin="anonymous"
+            />
             <div className="container py-4">
-                <div className="row p-2 shadow bg-dark rounded-3 text-center">
-                    <div className="col m-4 bg-body-secondary"><img src={clockIcon}/></div>
-                    <div className="col m-4 bg-body-secondary"><h1 className="display-2">0</h1></div>
-                    <div className="col m-4 bg-body-secondary"><h1 className="display-2">0</h1></div>
-                    <div className="col m-4 bg-body-secondary"><h1 className="display-2">0</h1></div>
-                    <div className="col m-4 bg-body-secondary"><h1 className="display-2">0</h1></div>
-                    <div className="col m-4 bg-body-secondary"><h1 className="display-2">0</h1></div>
-                    <div className="col m-4 bg-body-secondary"><h1 className="display-2">0</h1></div>
+                <div className="row p-2 bg-dark rounded-3">
+                    <div className="col m-4 bg-secondary rounded-3">
+                        <img src={clockIcon} alt="Clock Icon" />
+                    </div>
+                    {digits.map((digit, index) => (
+                        <div key={index} className="col m-4 bg-secondary rounded-3 d-flex align-items-center justify-content-center">
+                            <h1 className="display-2 text-white">{digit}</h1>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
-	);
+    );
 };

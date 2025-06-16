@@ -5,14 +5,26 @@ import ReactDOM from 'react-dom/client'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap"
 
-// index.css'
-//import '../styles/index.css'
-
 // components
 import {SecondsCounter} from './components/SecondsCounter';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <SecondsCounter/>
-  </React.StrictMode>,
-)
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+let seconds = 0;
+
+const render = () => {
+  root.render(
+    <React.StrictMode>
+      <SecondsCounter seconds={seconds} />
+    </React.StrictMode>
+  );
+};
+
+// the all zero's render
+render();
+
+// Increment and re-render every second
+setInterval(() => {
+    seconds++;
+    render();
+}, 1000);
