@@ -20,7 +20,7 @@ const render = () => {
   );
 };
 
-// the all zero's render
+// the initial all zero's render
 render();
 
 // Increment and re-render every second
